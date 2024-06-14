@@ -1,5 +1,6 @@
 import './styles.css';
-import './index.css'
+import './home.css';
+import './about.css';
 
 const elements = {
   hamburguerMenu: document.querySelector('.hamburguer'),
@@ -20,36 +21,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.links.forEach((element) => {
     element.addEventListener('click', () => {
-      if (element.textContent == 'About') return loadAboutPage();
-      if (element.textContent == 'Index') return loadIndexPage();
+      if (element.textContent == 'Projects') return loadProjectsPage();
+      if (element.textContent == 'Home') return loadHomePage();
     });
   });
 
-  loadIndexPage();
+  loadHomePage();
 });
 
-function loadIndexPage() {
+function loadHomePage() {
   // reset state
-  elements.links[0].textContent = 'About';
-  elements.links[1].textContent = 'Projects';
-  elements.links[2].textContent = 'Contact';
-  if (document.body.querySelector('main'))
-    document.body.removeChild(document.body.querySelector('main'));
 
+  const mainElement = document.body.querySelector('main');
+  if (mainElement) {
+    document.body.removeChild(mainElement);
+  }
+
+  elements.links.forEach((link) => {
+    if (link.textContent === 'Home') {
+      link.classList.add('selected')
+    } else {
+      link.classList.remove('selected');
+    }
+  });
   // build page
+
   const main = document.createElement('main');
-  main.classList.add('index-main')
+  main.classList.add('index-main');
 
   const img = document.createElement('img');
+  img.classList.add('alonso-img');
   const h1 = document.createElement('h1');
-  h1.textContent = 'Facundo Tuñas';
+  h1.textContent = 'Fernando Alonso';
   const h2 = document.createElement('h2');
   h2.textContent = 'Web Developer';
   const button = document.createElement('a');
   button.classList.add('about-button');
-  button.textContent = 'About me...';
+  button.textContent = 'My Projects...';
 
-  button.addEventListener('click', loadAboutPage);
+  button.addEventListener('click', loadProjectsPage);
 
   main.appendChild(img);
   main.appendChild(h1);
@@ -59,18 +69,65 @@ function loadIndexPage() {
   document.body.appendChild(main);
 }
 
-function loadAboutPage() {
+function loadProjectsPage() {
   // reset state
-  elements.links[0].textContent = 'Index';
-  elements.links[1].textContent = 'Projects';
-  elements.links[2].textContent = 'Contact';
-  console.log('xDD');
-  if (document.body.querySelector('main'))
-    document.body.removeChild(document.body.querySelector('main'));
+
+  const mainElement = document.body.querySelector('main');
+  if (mainElement) {
+    document.body.removeChild(mainElement);
+  }
+
+  elements.links.forEach((link) => {
+    if (link.textContent === 'Projects') {
+      link.classList.add('selected')
+    } else {
+      link.classList.remove('selected');
+    }
+  });
 
   // build page
-  const main = document.createElement('main');
-  main.classList.add('abput-main')
 
+  const main = document.createElement('main');
+  main.classList.add('about-main');
+
+  const projectsContainer = document.createElement('div');
+  projectsContainer.classList.add('projects-container');
+  appendProject(projectsContainer, 4);
+
+  main.appendChild(projectsContainer);
   document.body.appendChild(main);
+}
+
+function appendImage(div, num) {
+  let counter = 0;
+  while (counter < num) {
+    const img = document.createElement('img');
+    div.appendChild(img);
+
+    counter++;
+  }
+}
+
+function appendProject(div, num) {
+  let counter = 0;
+  while (counter < num) {
+    const project = document.createElement('a');
+    project.href = 'https://github.com/';
+    project.target = '_blank';
+    project.classList.add('project');
+    project.classList.add('about-surfaces');
+
+    const h1 = document.createElement('h1');
+    h1.textContent = 'Project Title';
+    const projectImage = document.createElement('div');
+    projectImage.classList.add('image');
+
+    project.appendChild(h1);
+    project.appendChild(projectImage);
+    if (counter == 1) appendImage(project, 4);
+    else appendImage(project, 3);
+
+    div.appendChild(project);
+    counter++;
+  }
 }

@@ -16,12 +16,12 @@
   align-items: center;
 }
 
-.index-main img {
+.alonso-img {
   content:url("./fernando-alonso-aston-martin-r.jpg");
   width: 150px;
   height: 150px;
 
-  border-radius: 100px;
+  border-radius: 70px;
   object-fit: cover;
 
   margin-top: -50px;
