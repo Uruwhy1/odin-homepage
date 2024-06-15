@@ -5,7 +5,7 @@
   margin: auto;
 
   border-radius: 5px;
-  padding: 100px 150px;
+  padding: 50px 150px;
 
   text-align: center;
   font-size: 1.8rem;
@@ -24,7 +24,6 @@
   border-radius: 70px;
   object-fit: cover;
 
-  margin-top: -50px;
   padding-top: 5px;
   margin-bottom: 10px;
 }
@@ -34,7 +33,6 @@
 }
 
 .index-main a {
-  border: 1px solid;
   border-radius: 5px;
 
   margin-top: 25px;
@@ -52,12 +50,15 @@
 .index-main a:hover {
   transform: scale(1.1);
 }
+.index-main a:active {
+  transform: scale(0.9);
+}
 
 
 @media only screen and (max-width: 800px) {
   .index-main {
     font-size: 1.4rem;
-    padding: 100px;
+    padding: 50px 100px;
   }
   .index-main img {
     width: 120px;

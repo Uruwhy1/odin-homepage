@@ -1,0 +1,9 @@
+.contact-main {
+  background-color: var(--surface-color);
+  outline: red 5px solid;
+
+  margin: 12.5% 20%;
+  padding: 1em;
+  border-radius: 5px;
+
+}
