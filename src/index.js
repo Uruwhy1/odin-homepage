@@ -1,7 +1,6 @@
 import './styles.css';
 import './home.css';
 import './about.css';
-import './contact.css';
 
 import { appendProject } from './helpers';
 
